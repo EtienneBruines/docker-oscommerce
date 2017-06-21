@@ -7,7 +7,7 @@
 4. Create a symlink from `/etc/systemd/system/oscommerce.service` to the `oscommerce.service` file. 
 5. Reload systemd with `systemctl daemon-reload`.
 6. Now run osCommerce `systemctl start oscommerce.service`.
-7. You will now have an osCommerce instance running somewhere within your 172.x.0.x network. 
+7. You will now have an osCommerce instance running somewhere within your 172.x.0.x network, on port 2015. 
 
 ## Who is this project intended for
 Mostly me. Didn't want the hassle of creating a new clean osCommerce instance every time.
