@@ -1,0 +1,30 @@
+version: '3'
+services:
+        web:
+                image: abiosoft/caddy:latest
+                ports:
+                        - "2015:2015"
+                volumes: 
+                        - './catalog:/srv${VIRTUAL_PATH}:ro'
+                        - ./Caddyfile:/etc/Caddyfile:ro
+                links:
+                        - php
+        php:
+                build: ./php
+                restart: always
+                volumes: 
+                        - './catalog:/srv${VIRTUAL_PATH}:rw'
+                links:
+                        - mysql
+        mysql:
+                image: mysql:5.5
+                volumes:
+                        - mysqlvolume:/var/lib/mysql
+                restart: always
+                env_file:
+                        .env
+                environment:
+                        MYSQL_DATABASE: osc
+                        MYSQL_USER: osc
+volumes:
+        mysqlvolume: {}
